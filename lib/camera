@@ -1,0 +1,42 @@
+import 'dart:html';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+Future camera() async {
+  await ImagePicker().pickImage(source: ImageSource.camera);
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Proyecto Mixto"),
+        ),
+        body: Row(
+          children: [
+              
+              Column(
+                children: [
+                  ElevatedButton(onPressed: () => camera(), child: Text("Cargar")),
+                ],
+              ),
+              Column(
+                children: [
+                  ElevatedButton(onPressed: () => camera(), child: Text("Verificar")),
+                ],
+              ),
+            ],
+        ),
+      ),
+    );
+  }
+}
